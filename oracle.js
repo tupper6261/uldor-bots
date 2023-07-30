@@ -1,5 +1,5 @@
 const { Client, Intents, MessageActionRow, MessageButton, ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder, Events } = require('discord.js');
-const client = new Client({ intents: [Intents.FLAGS.Guilds, Intents.FLAGS.GuildMembers, Intents.FLAGS.MessageContent, Intents.FLAGS.MessageComponents] });
+const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers, GatewayIntentBits.MessageContent, GatewayIntentBits.MessageComponents] });
 
 const passwords = {
     '1128498231140159600': 'password1',
