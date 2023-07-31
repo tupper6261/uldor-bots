@@ -1,7 +1,4 @@
-//const { Client, GatewayIntentBits, MessageActionRow, MessageButton, ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder, Events } = require('discord.js');
-//const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers, GatewayIntentBits.MessageContent, GatewayIntentBits.MessageComponents] });
 const { Client, GatewayIntentBits, Partials, ButtonBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder, Events, ButtonStyle } = require('discord.js');
-
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers, GatewayIntentBits.MessageContent], partials: [Partials.Channel] });
 
 const passwords = {
