@@ -8,6 +8,7 @@ const passwords = {
 };
 
 client.on('ready', async () => {
+    /*
     // Send a message with a button in each channel
     const channels = Object.keys(passwords);
     const row = new ActionRowBuilder()
@@ -20,8 +21,14 @@ client.on('ready', async () => {
 
     for (const channelId of channels) {
         const channel = await client.channels.fetch(channelId);
-        await channel.send({ content: 'Click the button to enter the password.', components: [row] });
+        const messages = await channel.messages.fetch({ limit: 10 }); // fetch the last 10 messages
+        const botMessage = messages.find(message => message.author.bot && message.content === 'Click the button to enter the password.');
+
+        if (!botMessage) {
+            await channel.send({ content: 'Click the button to enter the password.', components: [row] });
+        }
     }
+    */
 });
 
 client.on(Events.InteractionCreate, async interaction => {
