@@ -15,10 +15,10 @@ client.on('ready', async () => {
     const channels = Object.keys(passwords);
     const row = new ActionRowBuilder()
         .addComponents(
-            new MessageButton()
+            new ButtonBuilder()
                 .setCustomId('passwordButton')
                 .setLabel('Enter Password')
-                .setStyle('PRIMARY'),
+                .setStyle(ButtonStyle.Primary),
         );
 
     for (const channelId of channels) {
