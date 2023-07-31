@@ -13,7 +13,7 @@ const passwords = {
 client.on('ready', async () => {
     // Send a message with a button in each channel
     const channels = Object.keys(passwords);
-    const row = new MessageActionRow()
+    const row = new ActionRowBuilder()
         .addComponents(
             new MessageButton()
                 .setCustomId('passwordButton')
