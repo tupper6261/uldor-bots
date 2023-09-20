@@ -240,5 +240,4 @@ win32-setctime==1.1.0
 wrapt==1.15.0
 wsproto==1.0.0
 yarg==0.1.9
-yarl==1.7.2
 zstandard==0.20.0
