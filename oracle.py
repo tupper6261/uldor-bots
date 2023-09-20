@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 from discord.ui import Button, View, Select, Modal, TextInput
 import asyncio
-import os
+from dotenv import load_dotenv
 
 load_dotenv()
 
