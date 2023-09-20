@@ -1,1 +1,1 @@
-worker: node oracle.js
+worker1: python3 oracle.py
