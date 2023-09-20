@@ -2,9 +2,11 @@ import discord
 from discord.ext import commands
 from discord.ui import Button, View, Select, Modal, TextInput
 import asyncio
+import os
 
-DATABASE_TOKEN = "postgres://yezaufigplmbrj:daa40d1942c2a9bc98258d57d3c6835b989d25aae748cfb199526dca7da06a66@ec2-34-228-248-175.compute-1.amazonaws.com:5432/db6a6eqkldihes" #os.getenv('DATABASE_TOKEN')
-BOT_TOKEN = "MTEzNDkyNjg5NjI0MTU5NDQxOA.G7Alb4.DtCgfgNSss5pIpgQ9h-S4G8OV7EtkAsk9UBNN4" #os.getenv('DISCORD_BOT_TOKEN')
+load_dotenv()
+
+BOT_TOKEN = os.getenv('DISCORD_BOT_TOKEN')
 
 GUILD_ID = 1114571314334806066
 
