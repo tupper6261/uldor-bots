@@ -176,7 +176,7 @@ class TimeView(View):
             await interaction.response.send_message("You have tried too many times.", ephemeral=True)
             return
 
-        modal = PassphraseModal()
+        modal = TimePassphraseModal()
         await interaction.response.send_modal(modal)
 
 class TranquilityPassphraseModal(Modal, title="Enter the Passphrase"):
