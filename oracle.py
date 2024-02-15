@@ -78,6 +78,7 @@ async def on_ready():
     tranquility_channel = discord.utils.get(guild.channels, id=TRANQUILITY_CHANNEL_ID)
     genesis_channel = discord.utils.get(guild.channels, id=GENESIS_CHANNEL_ID)
     the_final_journey_channel = discord.utils.get(guild.channels, id=THE_FINAL_JOURNEY_CHANNEL_ID)
+    global role_reset_loop
     
      # Delete messages posted by the bot
     async for message in candor_channel.history():
@@ -394,6 +395,14 @@ class TheFinalJourneyView(View):
         
     @discord.ui.button(label="Enter the Passphrase", style=discord.ButtonStyle.primary, custom_id="enter_passphrase_the_final_journey")
     async def enter_passphrase(self, interaction: discord.Interaction, button: discord.ui.Button):
+        user = interaction.user
+        guild = interaction.guild
+        attempt_25_role = discord.utils.get(guild.roles, id=ATTEMPT_25_ROLE_ID)
+
+        # Check if the user has the ATTEMPT_25_ROLE_ID
+        if attempt_25_role in user.roles:
+            await interaction.response.send_message("You have tried too many times. You may try again in 30 minutes (your '25 Attempts' role will be automatically removed at that time).", ephemeral=True)
+            return
         modal = TheFinalJourneyPassphraseModal()
         await interaction.response.send_modal(modal)
     
