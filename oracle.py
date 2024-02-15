@@ -27,6 +27,39 @@ ATTEMPT_2_ROLE_ID = 1154058474842488862
 ATTEMPT_3_ROLE_ID = 1154058507503546458
 ATTEMPT_4_ROLE_ID = 1154058536163217459
 ATTEMPT_5_ROLE_ID = 1154058567205261322
+ATTEMPT_6_ROLE_ID = 1207776099090571284
+ATTEMPT_7_ROLE_ID = 1207776157605564457
+ATTEMPT_8_ROLE_ID = 1207776188379037736
+ATTEMPT_9_ROLE_ID = 1207776209555951730
+ATTEMPT_10_ROLE_ID = 1207776231978704947
+ATTEMPT_11_ROLE_ID = 1207776254904770670
+ATTEMPT_12_ROLE_ID = 1207776281924468776
+ATTEMPT_13_ROLE_ID = 1207776314778591324
+ATTEMPT_14_ROLE_ID = 1207776343425687583
+ATTEMPT_15_ROLE_ID = 1207776368591638628
+ATTEMPT_16_ROLE_ID = 1207776395770601593
+ATTEMPT_17_ROLE_ID = 1207776418704924696
+ATTEMPT_18_ROLE_ID = 1207776450594218087
+ATTEMPT_19_ROLE_ID = 1207776477332897814
+ATTEMPT_20_ROLE_ID = 1207776500573544488
+ATTEMPT_21_ROLE_ID = 1207776526716633098
+ATTEMPT_22_ROLE_ID = 1207776550460854332
+ATTEMPT_23_ROLE_ID = 1207776574095761521
+ATTEMPT_24_ROLE_ID = 1207776602428276806
+ATTEMPT_25_ROLE_ID = 1207776626197135460
+
+attempt_roles = [
+            ATTEMPT_1_ROLE_ID, ATTEMPT_2_ROLE_ID, ATTEMPT_3_ROLE_ID,
+            ATTEMPT_4_ROLE_ID, ATTEMPT_5_ROLE_ID, ATTEMPT_6_ROLE_ID,
+            ATTEMPT_7_ROLE_ID, ATTEMPT_8_ROLE_ID, ATTEMPT_9_ROLE_ID,
+            ATTEMPT_10_ROLE_ID, ATTEMPT_11_ROLE_ID, ATTEMPT_12_ROLE_ID,
+            ATTEMPT_13_ROLE_ID, ATTEMPT_14_ROLE_ID, ATTEMPT_15_ROLE_ID,
+            ATTEMPT_16_ROLE_ID, ATTEMPT_17_ROLE_ID, ATTEMPT_18_ROLE_ID,
+            ATTEMPT_19_ROLE_ID, ATTEMPT_20_ROLE_ID, ATTEMPT_21_ROLE_ID,
+            ATTEMPT_22_ROLE_ID, ATTEMPT_23_ROLE_ID, ATTEMPT_24_ROLE_ID,
+            ATTEMPT_25_ROLE_ID
+        ]
+
 
 # Set up the bot with the proper intents to read message content and reactions
 intents = discord.Intents.default()
@@ -123,12 +156,6 @@ class TimePassphraseModal(Modal, title="Enter the Passphrase"):
         user = interaction.user
         guild = interaction.guild
 
-        # List of attempt roles
-        attempt_roles = [
-            ATTEMPT_1_ROLE_ID, ATTEMPT_2_ROLE_ID, ATTEMPT_3_ROLE_ID,
-            ATTEMPT_4_ROLE_ID, ATTEMPT_5_ROLE_ID
-        ]
-
         if entered_passphrase == correct_passphrase:
             # Remove Time role and assign Tranquility role
             time_role = discord.utils.get(guild.roles, id=TIME_ROLE_ID)
@@ -169,10 +196,10 @@ class TimeView(View):
     async def enter_passphrase(self, interaction: discord.Interaction, button: discord.ui.Button):
         user = interaction.user
         guild = interaction.guild
-        attempt_5_role = discord.utils.get(guild.roles, id=ATTEMPT_5_ROLE_ID)
+        attempt_25_role = discord.utils.get(guild.roles, id=ATTEMPT_25_ROLE_ID)
 
-        # Check if the user has the ATTEMPT_5_ROLE_ID
-        if attempt_5_role in user.roles:
+        # Check if the user has the ATTEMPT_25_ROLE_ID
+        if attempt_25_role in user.roles:
             await interaction.response.send_message("You have tried too many times.", ephemeral=True)
             return
 
@@ -187,12 +214,6 @@ class TranquilityPassphraseModal(Modal, title="Enter the Passphrase"):
         correct_passphrase = "411"
         user = interaction.user
         guild = interaction.guild
-
-        # List of attempt roles
-        attempt_roles = [
-            ATTEMPT_1_ROLE_ID, ATTEMPT_2_ROLE_ID, ATTEMPT_3_ROLE_ID,
-            ATTEMPT_4_ROLE_ID, ATTEMPT_5_ROLE_ID
-        ]
 
         if entered_passphrase == correct_passphrase:
             # Assign Genesis role
@@ -234,10 +255,10 @@ class TranquilityView(View):
     async def enter_passphrase(self, interaction: discord.Interaction, button: discord.ui.Button):
         user = interaction.user
         guild = interaction.guild
-        attempt_5_role = discord.utils.get(guild.roles, id=ATTEMPT_5_ROLE_ID)
+        attempt_25_role = discord.utils.get(guild.roles, id=ATTEMPT_25_ROLE_ID)
 
-        # Check if the user has the ATTEMPT_5_ROLE_ID
-        if attempt_5_role in user.roles:
+        # Check if the user has the ATTEMPT_25_ROLE_ID
+        if attempt_25_role in user.roles:
             await interaction.response.send_message("You have tried too many times.", ephemeral=True)
             return
 
@@ -252,12 +273,6 @@ class GenesisPassphraseModal(Modal, title="Enter the Passphrase"):
         correct_passphrase = "2.73890"
         user = interaction.user
         guild = interaction.guild
-
-        # List of attempt roles
-        attempt_roles = [
-            ATTEMPT_1_ROLE_ID, ATTEMPT_2_ROLE_ID, ATTEMPT_3_ROLE_ID,
-            ATTEMPT_4_ROLE_ID, ATTEMPT_5_ROLE_ID
-        ]
 
         if entered_passphrase == correct_passphrase:
             # Assign The Final Journey role
@@ -299,10 +314,10 @@ class GenesisView(View):
     async def enter_passphrase(self, interaction: discord.Interaction, button: discord.ui.Button):
         user = interaction.user
         guild = interaction.guild
-        attempt_5_role = discord.utils.get(guild.roles, id=ATTEMPT_5_ROLE_ID)
+        attempt_25_role = discord.utils.get(guild.roles, id=ATTEMPT_25_ROLE_ID)
 
-        # Check if the user has the ATTEMPT_5_ROLE_ID
-        if attempt_5_role in user.roles:
+        # Check if the user has the ATTEMPT_25_ROLE_ID
+        if attempt_25_role in user.roles:
             await interaction.response.send_message("You have tried too many times.", ephemeral=True)
             return
 
@@ -317,12 +332,6 @@ class TheFinalJourneyPassphraseModal(Modal, title="Enter the Passphrase"):
         correct_passphrase = "balance"
         user = interaction.user
         guild = interaction.guild
-
-        # List of attempt roles
-        attempt_roles = [
-            ATTEMPT_1_ROLE_ID, ATTEMPT_2_ROLE_ID, ATTEMPT_3_ROLE_ID,
-            ATTEMPT_4_ROLE_ID, ATTEMPT_5_ROLE_ID
-        ]
 
         if entered_passphrase == correct_passphrase:
             # Assign Victory role
