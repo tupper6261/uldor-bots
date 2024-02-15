@@ -48,6 +48,8 @@ ATTEMPT_23_ROLE_ID = 1207776574095761521
 ATTEMPT_24_ROLE_ID = 1207776602428276806
 ATTEMPT_25_ROLE_ID = 1207776626197135460
 
+role_reset_loop = False
+
 attempt_roles = [
             ATTEMPT_1_ROLE_ID, ATTEMPT_2_ROLE_ID, ATTEMPT_3_ROLE_ID,
             ATTEMPT_4_ROLE_ID, ATTEMPT_5_ROLE_ID, ATTEMPT_6_ROLE_ID,
@@ -116,6 +118,27 @@ async def on_ready():
 
     # Post a new message with the button
     await the_final_journey_channel.send(view=TheFinalJourneyView())
+
+    if not role_reset_loop:
+        role_reset_loop = True
+        await role_reset()
+
+async def role_reset():
+    while True:
+        guild = discord.utils.get(bot.guilds, id = GUILD_ID)
+        attempt_25_role = discord.utils.get(guild.roles, id=ATTEMPT_25_ROLE_ID)
+
+        for member in guild.members:
+            # Check if the member has the role
+            if attempt_25_role in member.roles:
+                try:
+                    # Remove the role from the member
+                    await member.remove_roles(attempt_25_role)
+                    print(f"Removed role from {member}")
+                except discord.HTTPException as e:
+                    # If something goes wrong, print the error
+                    print(f"Failed to remove role from {member}: {e}")
+        await asyncio.sleep(1800)
 
 class TeamNameModal(Modal, title="Enter Your Team Name"):
     team_name_input = TextInput(placeholder="Team Name", custom_id="team_name_input", label="Input Your Team Name")
