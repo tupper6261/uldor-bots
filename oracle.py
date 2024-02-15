@@ -200,7 +200,7 @@ class TimeView(View):
 
         # Check if the user has the ATTEMPT_25_ROLE_ID
         if attempt_25_role in user.roles:
-            await interaction.response.send_message("You have tried too many times.", ephemeral=True)
+            await interaction.response.send_message("You have tried too many times. You may try again in 30 minutes (your '25 Attempts' role will be automatically removed at that time).", ephemeral=True)
             return
 
         modal = TimePassphraseModal()
@@ -259,7 +259,7 @@ class TranquilityView(View):
 
         # Check if the user has the ATTEMPT_25_ROLE_ID
         if attempt_25_role in user.roles:
-            await interaction.response.send_message("You have tried too many times.", ephemeral=True)
+            await interaction.response.send_message("You have tried too many times. You may try again in 30 minutes (your '25 Attempts' role will be automatically removed at that time).", ephemeral=True)
             return
 
         modal = TranquilityPassphraseModal()
@@ -318,7 +318,7 @@ class GenesisView(View):
 
         # Check if the user has the ATTEMPT_25_ROLE_ID
         if attempt_25_role in user.roles:
-            await interaction.response.send_message("You have tried too many times.", ephemeral=True)
+            await interaction.response.send_message("You have tried too many times. You may try again in 30 minutes (your '25 Attempts' role will be automatically removed at that time).", ephemeral=True)
             return
 
         modal = GenesisPassphraseModal()
