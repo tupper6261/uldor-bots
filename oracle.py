@@ -194,6 +194,8 @@ class TimePassphraseModal(Modal, title="Enter the Passphrase"):
                 role = discord.utils.get(guild.roles, id=role_id)
                 await user.remove_roles(role)
 
+            await asyncio.sleep(10)
+
             await user.remove_roles(time_role)
         else:
             await interaction.response.send_message("That passphrase is not correct.", ephemeral=True)
@@ -238,6 +240,9 @@ class TranquilityPassphraseModal(Modal, title="Enter the Passphrase"):
         guild = interaction.guild
 
         if entered_passphrase == correct_passphrase:
+
+            await interaction.response.send_message("You have submitted the correct passphrase! The next part of your journey has been made available to you.", ephemeral=True)
+
             # Assign Genesis role
             tranquility_role = discord.utils.get(guild.roles, id=TRANQUILITY_ROLE_ID)
             genesis_role = discord.utils.get(guild.roles, id=GENESIS_ROLE_ID)
@@ -248,12 +253,11 @@ class TranquilityPassphraseModal(Modal, title="Enter the Passphrase"):
                 role = discord.utils.get(guild.roles, id=role_id)
                 await user.remove_roles(role)
 
-            await interaction.response.send_message("You have submitted the correct passphrase! The next part of your journey has been made available to you.", ephemeral=True)
-
             await asyncio.sleep(10)
 
             await user.remove_roles(tranquility_role)
         else:
+            await interaction.response.send_message("That passphrase is not correct.", ephemeral=True)
             # Assign the next attempt role
             for i, role_id in enumerate(attempt_roles):
                 role = discord.utils.get(guild.roles, id=role_id)
@@ -266,8 +270,6 @@ class TranquilityPassphraseModal(Modal, title="Enter the Passphrase"):
             else:
                 first_attempt_role = discord.utils.get(guild.roles, id=ATTEMPT_1_ROLE_ID)
                 await user.add_roles(first_attempt_role)
-
-            await interaction.response.send_message("That passphrase is not correct.", ephemeral=True)
 
 class TranquilityView(View):
     def __init__(self):
@@ -297,6 +299,7 @@ class GenesisPassphraseModal(Modal, title="Enter the Passphrase"):
         guild = interaction.guild
 
         if entered_passphrase == correct_passphrase:
+            await interaction.response.send_message("You have submitted the correct passphrase! The next part of your journey has been made available to you.", ephemeral=True)
             # Assign The Final Journey role
             genesis_role = discord.utils.get(guild.roles, id=GENESIS_ROLE_ID)
             the_final_journey_role = discord.utils.get(guild.roles, id=THE_FINAL_JOURNEY_ROLE_ID)
@@ -307,12 +310,11 @@ class GenesisPassphraseModal(Modal, title="Enter the Passphrase"):
                 role = discord.utils.get(guild.roles, id=role_id)
                 await user.remove_roles(role)
 
-            await interaction.response.send_message("You have submitted the correct passphrase! The next part of your journey has been made available to you.", ephemeral=True)
-
             await asyncio.sleep(10)
 
             await user.remove_roles(genesis_role)
         else:
+            await interaction.response.send_message("That passphrase is not correct.", ephemeral=True)
             # Assign the next attempt role
             for i, role_id in enumerate(attempt_roles):
                 role = discord.utils.get(guild.roles, id=role_id)
@@ -325,8 +327,6 @@ class GenesisPassphraseModal(Modal, title="Enter the Passphrase"):
             else:
                 first_attempt_role = discord.utils.get(guild.roles, id=ATTEMPT_1_ROLE_ID)
                 await user.add_roles(first_attempt_role)
-
-            await interaction.response.send_message("That passphrase is not correct.", ephemeral=True)
 
 class GenesisView(View):
     def __init__(self):
@@ -356,6 +356,8 @@ class TheFinalJourneyPassphraseModal(Modal, title="Enter the Passphrase"):
         guild = interaction.guild
 
         if entered_passphrase == correct_passphrase:
+            await interaction.response.send_message("You have submitted the correct passphrase! The next part of your journey has been made available to you.", ephemeral=True)
+
             # Assign Victory role
             the_final_journey_role = discord.utils.get(guild.roles, id=THE_FINAL_JOURNEY_ROLE_ID)
             victory_role = discord.utils.get(guild.roles, id=VICTORY_ROLE_ID)
@@ -366,12 +368,11 @@ class TheFinalJourneyPassphraseModal(Modal, title="Enter the Passphrase"):
                 role = discord.utils.get(guild.roles, id=role_id)
                 await user.remove_roles(role)
 
-            await interaction.response.send_message("You have submitted the correct passphrase! The next part of your journey has been made available to you.", ephemeral=True)
-
             await asyncio.sleep(10)
 
             await user.remove_roles(the_final_journey_role)
         else:
+            await interaction.response.send_message("That passphrase is not correct.", ephemeral=True)
             # Assign the next attempt role
             for i, role_id in enumerate(attempt_roles):
                 role = discord.utils.get(guild.roles, id=role_id)
@@ -384,8 +385,6 @@ class TheFinalJourneyPassphraseModal(Modal, title="Enter the Passphrase"):
             else:
                 first_attempt_role = discord.utils.get(guild.roles, id=ATTEMPT_1_ROLE_ID)
                 await user.add_roles(first_attempt_role)
-
-            await interaction.response.send_message("That passphrase is not correct.", ephemeral=True)
 
 class TheFinalJourneyView(View):
     def __init__(self):
