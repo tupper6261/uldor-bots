@@ -184,6 +184,9 @@ class TimePassphraseModal(Modal, title="Enter the Passphrase"):
             # Remove Time role and assign Tranquility role
             time_role = discord.utils.get(guild.roles, id=TIME_ROLE_ID)
             tranquility_role = discord.utils.get(guild.roles, id=TRANQUILITY_ROLE_ID)
+
+            await interaction.response.send_message("You have submitted the correct passphrase! The next part of your journey has been made available to you.", ephemeral=True)
+
             await user.add_roles(tranquility_role)
 
             # Remove any attempt roles
@@ -191,12 +194,9 @@ class TimePassphraseModal(Modal, title="Enter the Passphrase"):
                 role = discord.utils.get(guild.roles, id=role_id)
                 await user.remove_roles(role)
 
-            await interaction.response.send_message("You have submitted the correct passphrase! The next part of your journey has been made available to you.", ephemeral=True)
-
-            await asyncio.sleep(10)
-
             await user.remove_roles(time_role)
         else:
+            await interaction.response.send_message("That passphrase is not correct.", ephemeral=True)
             # Assign the next attempt role
             for i, role_id in enumerate(attempt_roles):
                 role = discord.utils.get(guild.roles, id=role_id)
@@ -209,8 +209,6 @@ class TimePassphraseModal(Modal, title="Enter the Passphrase"):
             else:
                 first_attempt_role = discord.utils.get(guild.roles, id=ATTEMPT_1_ROLE_ID)
                 await user.add_roles(first_attempt_role)
-
-            await interaction.response.send_message("That passphrase is not correct.", ephemeral=True)
 
 class TimeView(View):
     def __init__(self):
