@@ -1,3 +1,4 @@
+
 import discord
 from discord.ext import commands
 from discord.ui import Button, View, Select, Modal, TextInput
@@ -298,7 +299,7 @@ class GenesisPassphraseModal(Modal, title="Enter the Passphrase"):
 
     async def on_submit(self, interaction: discord.Interaction):
         entered_passphrase = self.children[0].value
-        correct_passphrase = "2.73890"
+        correct_passphrase = "2.71511"
         user = interaction.user
         guild = interaction.guild
 
