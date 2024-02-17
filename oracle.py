@@ -161,6 +161,10 @@ class TeamNameModal(Modal, title="Enter Your Team Name"):
         # Send a confirmation message
         await interaction.response.send_message(f"You have joined {team_name}!", ephemeral=True)
 
+        # Assign Time role
+        time_role = discord.utils.get(guild.roles, id=TIME_ROLE_ID)
+        await interaction.user.add_roles(time_role)       
+
 class TeamNameView(View):
     def __init__(self):
         super().__init__(timeout=None)
